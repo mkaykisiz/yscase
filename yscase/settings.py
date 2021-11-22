@@ -29,7 +29,7 @@ PROJECT_ROOT = os.path.realpath(
 SECRET_KEY = 'django-insecure-oe--#iefbukdp7yiy@a@+164$s+utx1-c%y8r_s*&u@bg89y0)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -87,8 +87,12 @@ WSGI_APPLICATION = 'yscase.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'test',
+        'USER': 'postgres',
+        'PASSWORD': 'luna',
+        'HOST': 'postgres',
+        'PORT': '5432',
     }
 }
 
@@ -143,7 +147,7 @@ PUB_SUB_CHANNEL = 'ys'
 
 # REDIS INFO
 REDIS_CONN_TIMEOUT = 10
-REDIS_HOST = 'localhost'
+REDIS_HOST = 'redis'
 REDIS_PORT = '6379'
 REDIS_PASS = None
 
