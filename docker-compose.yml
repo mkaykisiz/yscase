@@ -1,0 +1,54 @@
+version: "3"
+
+networks:
+  main:
+
+services:
+
+  # App
+  app:
+    image: yscase_app
+    build:
+      context: .
+    stdin_open: true
+    tty: true
+    environment:
+      WAIT_HOSTS: postgres:5432, redis:6379
+    volumes:
+      - "./:/data/yscase"
+    networks:
+      - "main"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - "postgres"
+      - "redis"
+
+  # Postgres
+  postgres:
+    image: "postgres"
+    volumes:
+      - "./data/postgres-data:/var/lib/postgresql/data"
+      - "./init.sql:/docker-entrypoint-initdb.d/init.sql"
+    networks:
+      - "main"
+    ports:
+      - "5434:5432"
+    expose:
+      - "5434"
+    environment:
+      POSTGRES_PASSWORD: "luna"
+      POSTGRES_DB: "test"
+
+
+  # Redis
+  redis:
+    image: "redis"
+    volumes:
+      - "./data/redis-data:/data"
+    networks:
+      - "main"
+    ports:
+      - "6380:6379"
+    expose:
+      - "6380"
