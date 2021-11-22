@@ -462,7 +462,7 @@ CREATE TABLE public.restaurant_menu (
     deleted_at timestamp with time zone,
     food_id bigint NOT NULL,
     restaurant_id bigint NOT NULL,
-    "Amount" numeric(6,2) NOT NULL
+    amount numeric(6,2) NOT NULL
 );
 
 
@@ -738,7 +738,10 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 --
 
 COPY public.auth_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email) FROM stdin;
-1	pbkdf2_sha256$260000$hpE9roZRdBDZJIVA23mrIw$dQKTW0PtShXbYUJJ8VNOOj9u70EHaKZwhwDztQ6BvGQ=	2021-11-21 18:53:23.633131+00	t	Mehmet	KAYKISIZ	t	t	2021-11-20 21:03:42+00	m.kaykisiz@gmail.com
+1	pbkdf2_sha256$260000$LaZPpfAruSNIOGDpvyaluv$DTQ0ZwFBHzgNdQlJxkRtDs20CvB9iW706VzWjDd/sqc=	2021-11-22 20:45:33.490865+00	t	Mehmet	KAYKISIZ	t	t	2021-11-20 21:03:42+00	m.kaykisiz@gmail.com
+2	pbkdf2_sha256$260000$g1fyosRdL4OcD0E891gYnr$/bmF09dXLURwpcxJ0ejbYPG9NtfPW79JAPtF8WGSvn4=	\N	f	Uğur	Özi	f	t	2021-11-22 21:24:39+00	uozy@yspt.com
+3	pbkdf2_sha256$260000$RCfPcIgQv0edbtEEzf3K1F$LDvNxWhCI+RE4GrIQNhETUhF8Ytt2dChME7vyJYQvP8=	\N	f	Cenk	Yaldız	f	t	2021-11-22 21:25:41+00	cyaldiz@yspt.com
+4	pbkdf2_sha256$260000$HgG4jPBxsMnJLAeYYpQZYL$5J4ybtN1wYpuaRlxT6w+x50JpvVygyi5mFmeIuB6kG8=	\N	f	Selin	Simge	f	t	2021-11-22 21:26:07+00	ssimge@yspt.com
 \.
 
 
@@ -763,32 +766,15 @@ COPY public.auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
 --
 
 COPY public.django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
-1	2021-11-20 21:05:43.569283+00	1	Food object (1)	1	[{"added": {}}]	5	1
-2	2021-11-20 21:05:48.48249+00	2	Food object (2)	1	[{"added": {}}]	5	1
-3	2021-11-20 21:06:00.938592+00	3	Food object (3)	1	[{"added": {}}]	5	1
-4	2021-11-20 21:06:06.590687+00	4	Food object (4)	1	[{"added": {}}]	5	1
-5	2021-11-20 21:06:13.192923+00	5	Food object (5)	1	[{"added": {}}]	5	1
-6	2021-11-20 21:06:20.729459+00	6	Food object (6)	1	[{"added": {}}]	5	1
-7	2021-11-20 21:06:36.346526+00	7	Food object (7)	1	[{"added": {}}]	5	1
-8	2021-11-20 21:06:41.519364+00	8	Food object (8)	1	[{"added": {}}]	5	1
-9	2021-11-20 21:06:49.387684+00	9	Food object (9)	1	[{"added": {}}]	5	1
-10	2021-11-20 21:12:42.974128+00	9	Food object (9)	2	[{"changed": {"fields": ["Name"]}}]	5	1
-11	2021-11-20 21:17:51.299846+00	1	Döner/Kebap	1	[{"added": {}}]	6	1
-12	2021-11-20 21:19:03.643209+00	1	Süper Dönerci	1	[{"added": {}}]	7	1
-13	2021-11-20 21:19:25.260656+00	2	Ev Yemekleri	1	[{"added": {}}]	6	1
-14	2021-11-20 21:19:39.331246+00	2	Harika Ev Yemekleri	1	[{"added": {}}]	7	1
-15	2021-11-20 21:19:56.993231+00	3	Fast-Food	1	[{"added": {}}]	6	1
-16	2021-11-20 21:19:59.528425+00	3	Bizim Büfe	1	[{"added": {}}]	7	1
-17	2021-11-20 21:27:27.880679+00	3	Bizim Büfe	2	[{"added": {"name": "Menu Item", "object": "Bizim B\\u00fcfe Yengen Tost"}}, {"added": {"name": "Menu Item", "object": "Bizim B\\u00fcfe Goral\\u0131"}}, {"added": {"name": "Menu Item", "object": "Bizim B\\u00fcfe Dilli Ka\\u015farl\\u0131"}}]	7	1
-18	2021-11-20 21:27:40.938067+00	2	Harika Ev Yemekleri	2	[{"added": {"name": "Menu Item", "object": "Harika Ev Yemekleri Kuru Fas\\u00fclye"}}, {"added": {"name": "Menu Item", "object": "Harika Ev Yemekleri Mercimek \\u00c7orbas\\u0131"}}, {"added": {"name": "Menu Item", "object": "Harika Ev Yemekleri Pilav"}}]	7	1
-19	2021-11-20 21:27:53.227272+00	1	Süper Dönerci	2	[{"added": {"name": "Menu Item", "object": "S\\u00fcper D\\u00f6nerci D\\u00f6ner"}}, {"added": {"name": "Menu Item", "object": "S\\u00fcper D\\u00f6nerci Etibol \\u0130skender"}}, {"added": {"name": "Menu Item", "object": "S\\u00fcper D\\u00f6nerci \\u0130skender"}}]	7	1
-20	2021-11-20 21:35:09.600365+00	c05731e4-f5ec-4c8f-9c09-d1d7f2304ea2	c05731e4-f5ec-4c8f-9c09-d1d7f2304ea2  2021-11-20 21:35:09.600255	1	[{"added": {}}, {"added": {"name": "Order Item", "object": "c05731e4-f5ec-4c8f-9c09-d1d7f2304ea2  2021-11-20 21:35:09.599226 Dilli Ka\\u015farl\\u0131"}}, {"added": {"name": "Order Item", "object": "c05731e4-f5ec-4c8f-9c09-d1d7f2304ea2  2021-11-20 21:35:09.599259 Goral\\u0131"}}, {"added": {"name": "Order Item", "object": "c05731e4-f5ec-4c8f-9c09-d1d7f2304ea2  2021-11-20 21:35:09.599282 Goral\\u0131"}}]	11	1
-21	2021-11-20 21:35:09.746336+00	61e22d7d-da0e-4cb7-a67e-d5fa2e50d505	61e22d7d-da0e-4cb7-a67e-d5fa2e50d505  2021-11-20 21:35:09.746092	1	[{"added": {}}, {"added": {"name": "Order Item", "object": "61e22d7d-da0e-4cb7-a67e-d5fa2e50d505  2021-11-20 21:35:09.745881 Dilli Ka\\u015farl\\u0131"}}, {"added": {"name": "Order Item", "object": "61e22d7d-da0e-4cb7-a67e-d5fa2e50d505  2021-11-20 21:35:09.745954 Goral\\u0131"}}, {"added": {"name": "Order Item", "object": "61e22d7d-da0e-4cb7-a67e-d5fa2e50d505  2021-11-20 21:35:09.745998 Goral\\u0131"}}]	11	1
-22	2021-11-20 21:36:33.615199+00	1	Mehmet KAYKISIZ m.kaykisiz@gmail.com	2	[{"changed": {"fields": ["Email", "First name", "Last name"]}}]	4	1
-23	2021-11-20 21:37:35.820783+00	b35d5414-d9c5-418b-9479-aaeb2fd42b52	b35d5414-d9c5-418b-9479-aaeb2fd42b52 Mehmet KAYKISIZ 2021-11-20 21:37:35.820681	1	[{"added": {}}, {"added": {"name": "Order Item", "object": "b35d5414-d9c5-418b-9479-aaeb2fd42b52 Mehmet KAYKISIZ 2021-11-20 21:37:35.820609 Kuru Fas\\u00fclye"}}]	11	1
-24	2021-11-20 21:37:47.743744+00	5fbf0bf2-9cc3-49d3-a484-a38bce9ade0c	5fbf0bf2-9cc3-49d3-a484-a38bce9ade0c Mehmet KAYKISIZ 2021-11-20 21:37:47.743587	1	[{"added": {}}, {"added": {"name": "Order Item", "object": "5fbf0bf2-9cc3-49d3-a484-a38bce9ade0c Mehmet KAYKISIZ 2021-11-20 21:37:47.743473 D\\u00f6ner"}}, {"added": {"name": "Order Item", "object": "5fbf0bf2-9cc3-49d3-a484-a38bce9ade0c Mehmet KAYKISIZ 2021-11-20 21:37:47.743514 Etibol \\u0130skender"}}]	11	1
-25	2021-11-21 18:53:35.033162+00	4	test	1	[{"added": {}}]	7	1
-26	2021-11-21 21:25:53.744771+00	9	Süper Dönerci İskender	2	[{"changed": {"fields": ["Amount"]}}]	8	1
+2	2021-11-22 21:24:40.052344+00	2	  uozy@yspt.com	1	[{"added": {}}]	6	1
+3	2021-11-22 21:25:16.580321+00	2	Uğur Özi uozy@yspt.com	2	[{"changed": {"fields": ["First name", "Last name"]}}]	6	1
+4	2021-11-22 21:25:41.541935+00	3	  cyaldiz@yspt.com	1	[{"added": {}}]	6	1
+5	2021-11-22 21:25:55.490197+00	3	Cenk Yaldız cyaldiz@yspt.com	2	[{"changed": {"fields": ["First name", "Last name"]}}]	6	1
+6	2021-11-22 21:26:07.438174+00	4	  ssimge@yspt.com	1	[{"added": {}}]	6	1
+7	2021-11-22 21:26:19.688678+00	4	Selin Simge ssimge@yspt.com	2	[{"changed": {"fields": ["First name", "Last name"]}}]	6	1
+8	2021-11-22 21:27:36.359609+00	5	Test 2	1	[{"added": {}}]	9	1
+9	2021-11-22 21:27:51.728234+00	4	test	3		9	1
+10	2021-11-22 21:27:51.745515+00	5	Test 2	3		9	1
 \.
 
 
@@ -853,6 +839,8 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 34	user	0003_auto_20211103_1802	2021-11-22 16:30:58.837787+00
 35	user	0004_user_profile_image	2021-11-22 16:30:58.882118+00
 36	user	0005_auto_20211120_1454	2021-11-22 16:30:58.949423+00
+37	order	0007_alter_orderfood_order	2021-11-22 21:12:37.600066+00
+38	restaurant	0006_rename_amount_menu_amount	2021-11-22 21:12:37.653606+00
 \.
 
 
@@ -861,6 +849,7 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 --
 
 COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
+55xngpot5qm45y8jwmgy47uwne7mvrdx	.eJxVjD0OwyAUg-_CXCF-A3TsnjOgBw9K2gqkkExV714iZWgXy_Jn-0087Fvxe0-rX5BcCSeX3yxAfKZ6AHxAvTcaW93WJdCjQk_a6dwwvW5n9--gQC9jDThJ56xlQqgMIkedUOWs7VCdeBbArJDDSYccmEbFDePKpEnlELkhny_iZzeh:1mpGBx:4isfOqPvWWFgXOEN_G3nw0M_7CvtrsXQpg-85zZd1rc	2021-12-06 20:45:33.49706+00
 \.
 
 
@@ -869,15 +858,15 @@ COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
 --
 
 COPY public.food_food (id, created_at, modified_at, deleted_at, name, cover_image) FROM stdin;
-1	2021-11-20 21:05:43.566188+00	2021-11-20 21:05:43.566254+00	\N	Döner	
-2	2021-11-20 21:05:48.480141+00	2021-11-20 21:05:48.480187+00	\N	İskender	
-3	2021-11-20 21:06:00.937026+00	2021-11-20 21:06:00.937074+00	\N	Etibol İskender	
-4	2021-11-20 21:06:06.589118+00	2021-11-20 21:06:06.589209+00	\N	Kuru Fasülye	
-5	2021-11-20 21:06:13.191334+00	2021-11-20 21:06:13.191382+00	\N	Pilav	
-6	2021-11-20 21:06:20.727745+00	2021-11-20 21:06:20.727794+00	\N	Mercimek Çorbası	
-7	2021-11-20 21:06:36.343931+00	2021-11-20 21:06:36.344074+00	\N	Goralı	
-8	2021-11-20 21:06:41.518307+00	2021-11-20 21:06:41.518353+00	\N	Dilli Kaşarlı	
-9	2021-11-20 21:06:49.385865+00	2021-11-20 21:12:42.971997+00	\N	Yengen Tost	
+1	2021-11-20 21:05:43.566188+00	2021-11-20 21:05:43.566254+00	\N	Döner
+2	2021-11-20 21:05:48.480141+00	2021-11-20 21:05:48.480187+00	\N	İskender
+3	2021-11-20 21:06:00.937026+00	2021-11-20 21:06:00.937074+00	\N	Etibol İskender
+4	2021-11-20 21:06:06.589118+00	2021-11-20 21:06:06.589209+00	\N	Kuru Fasülye
+5	2021-11-20 21:06:13.191334+00	2021-11-20 21:06:13.191382+00	\N	Pilav
+6	2021-11-20 21:06:20.727745+00	2021-11-20 21:06:20.727794+00	\N	Mercimek Çorbası
+7	2021-11-20 21:06:36.343931+00	2021-11-20 21:06:36.344074+00	\N	Goralı
+8	2021-11-20 21:06:41.518307+00	2021-11-20 21:06:41.518353+00	\N	Dilli Kaşarlı
+9	2021-11-20 21:06:49.385865+00	2021-11-20 21:12:42.971997+00	\N	Yengen Tost
 \.
 
 
@@ -886,6 +875,107 @@ COPY public.food_food (id, created_at, modified_at, deleted_at, name, cover_imag
 --
 
 COPY public.order_order (created_at, modified_at, deleted_at, order_token, restaurant_id, user_id, status) FROM stdin;
+2021-11-20 21:35:09.594979+00	2021-11-20 21:35:09.595015+00	\N	8e424208-dd69-469e-9be4-7461f3c5cbe8	3	1	created
+2021-11-20 21:35:09.741658+00	2021-11-20 21:35:09.741713+00	\N	447585f3-c9dc-45ec-b8c8-5a460d5761b7	3	1	created
+2021-11-20 21:37:35.818591+00	2021-11-20 21:37:35.818631+00	\N	1fbb5e4b-3ecb-4891-9783-608dad8738d8	2	1	created
+2021-11-20 21:37:47.738411+00	2021-11-20 21:37:47.738468+00	\N	5c5e9b2d-f98c-4b16-9eee-e0e1e07329dd	1	1	created
+2021-11-21 18:21:06.151462+00	2021-11-21 18:21:06.151678+00	\N	14d66908-2676-4b75-8c0e-a3e305c81b7d	3	1	created
+2021-11-21 21:21:49.515933+00	2021-11-21 21:21:49.516012+00	\N	31f122a1-3052-48e5-a385-b9e14d8181c2	3	1	created
+2021-11-21 21:22:01.07765+00	2021-11-21 21:22:01.077807+00	\N	53d2b45b-4116-43bb-a4c5-13d3f525fd35	3	1	created
+2021-11-21 21:22:12.823043+00	2021-11-21 21:22:12.823149+00	\N	6eeea464-a615-4e3e-901c-963684fabfd0	3	1	created
+2021-11-21 21:22:42.732219+00	2021-11-21 21:22:42.732471+00	\N	66c62335-b08e-4638-8d1d-0e12debd3862	3	1	created
+2021-11-21 21:22:54.040106+00	2021-11-21 21:22:54.040309+00	\N	22ae73f1-1017-41dd-9f80-ab41e74f3a93	3	1	created
+2021-11-21 21:23:34.629582+00	2021-11-21 21:23:34.629718+00	\N	8c5b6c14-4ce1-458d-a9bd-08a693c83114	3	1	created
+2021-11-21 21:24:05.948602+00	2021-11-21 21:24:05.948697+00	\N	0c0c857a-b93c-402b-9dfa-bb15356692fc	3	1	created
+2021-11-21 21:24:08.356991+00	2021-11-21 21:24:08.357154+00	\N	37336f50-f956-4dc3-96f6-1d60852ed596	3	1	created
+2021-11-21 21:24:17.636124+00	2021-11-21 21:24:17.636277+00	\N	5860cd7a-0410-4de0-9e9e-e2bf476cefce	3	1	created
+2021-11-21 21:26:02.934303+00	2021-11-21 21:26:02.934443+00	\N	94a23234-0153-4bf6-ac61-5fe0b2a1f54d	3	1	created
+2021-11-21 21:26:31.627849+00	2021-11-21 21:26:31.628455+00	\N	2c2794c2-8fbe-4c25-91d7-bb0e1b6eb123	3	1	created
+2021-11-21 21:27:53.090827+00	2021-11-21 21:27:53.090926+00	\N	5fd3c70a-bdbe-472a-bbcb-ec11400d3788	3	1	created
+2021-11-21 21:28:17.293508+00	2021-11-21 21:28:17.29358+00	\N	bcb6334e-dc5a-42af-9576-98392fa93f3b	3	1	created
+2021-11-21 21:28:26.931199+00	2021-11-21 21:28:26.93206+00	\N	38dfa984-2a65-4eb3-89b3-b0fe71c9e011	1	1	created
+2021-11-21 21:28:35.807611+00	2021-11-21 21:51:11.377431+00	\N	7aeec407-fdb9-4806-8775-b64a89f7622d	1	1	completed
+2021-11-21 22:10:55.100734+00	2021-11-21 22:10:55.100842+00	\N	ee727be4-1f95-43c5-b5ff-476bd794c334	1	1	created
+2021-11-21 22:18:44.675363+00	2021-11-21 22:18:46.473738+00	\N	75e8c440-4f3a-4c82-ae36-be261d3b10ef	1	1	waiting
+2021-11-21 22:54:59.367652+00	2021-11-21 22:54:59.36775+00	\N	cf069729-db98-4c2b-a60e-45c4af713114	1	1	created
+2021-11-21 22:55:36.82845+00	2021-11-21 22:55:36.828541+00	\N	b787b140-8c1c-4687-81d7-f9b582bde8b6	1	1	created
+2021-11-21 22:56:32.917911+00	2021-11-21 22:56:32.938381+00	\N	85103e34-991c-4a6f-b91d-a88cc380c828	1	1	waiting
+2021-11-21 22:56:49.03057+00	2021-11-21 22:56:49.086314+00	\N	1609107b-3288-428e-aab3-3f2e74c80d85	1	1	waiting
+2021-11-21 22:57:45.642665+00	2021-11-21 22:57:45.661008+00	\N	03249d43-cf8d-4515-a78b-d6986b887d54	1	1	waiting
+2021-11-21 22:57:54.188646+00	2021-11-21 22:57:54.29301+00	\N	20ff2257-c8aa-4962-874a-b31fc9172717	1	1	waiting
+2021-11-21 22:57:57.434999+00	2021-11-21 22:57:57.45056+00	\N	a936fa17-ffdd-4ada-a5ce-56287f466a03	1	1	waiting
+2021-11-21 23:02:14.233226+00	2021-11-21 23:02:14.26422+00	\N	ceea5345-4daf-454b-a4f2-ef14ce2d552d	1	1	waiting
+2021-11-21 23:04:03.550369+00	2021-11-21 23:04:03.570757+00	\N	38c2dcf4-b15e-4317-8293-ca5ee2d00cc1	1	1	waiting
+2021-11-21 23:04:56.077974+00	2021-11-21 23:04:56.107187+00	\N	3ff26157-3978-4e64-9569-d880141aaf89	1	1	waiting
+2021-11-21 23:05:13.824221+00	2021-11-21 23:05:13.824323+00	\N	e5af7514-a1f8-4062-bc4f-0bc49dee8f51	1	1	created
+2021-11-21 23:05:18.397225+00	2021-11-21 23:05:18.397356+00	\N	89849d6c-4681-495e-be15-1fcfd6d3de42	1	1	created
+2021-11-21 23:05:25.246016+00	2021-11-21 23:05:25.246147+00	\N	f5303e18-b170-4bcd-b02e-4ebf28f205d2	1	1	created
+2021-11-21 23:08:39.299699+00	2021-11-21 23:08:39.299774+00	\N	f35965fb-9338-4d1d-b769-5ee30b31aa25	1	1	created
+2021-11-21 23:08:41.903924+00	2021-11-21 23:08:41.903996+00	\N	47089436-593c-4ebc-b985-481a436822db	1	1	created
+2021-11-21 23:08:56.417973+00	2021-11-21 23:08:56.440851+00	\N	8c3aa6cb-52bc-459c-a3c1-bd547e7bf819	1	1	waiting
+2021-11-21 23:09:45.264566+00	2021-11-21 23:09:45.281879+00	\N	8ab2b6f7-8207-452f-a96b-f66bb3325d95	1	1	waiting
+2021-11-21 23:09:57.600966+00	2021-11-21 23:09:57.620088+00	\N	ad8fa296-839c-4ff2-9d84-9b526ba1115e	1	1	waiting
+2021-11-21 23:11:35.147227+00	2021-11-21 23:11:35.169058+00	\N	ad135ed4-83f7-4382-84cc-332b4495f92e	1	1	waiting
+2021-11-21 23:11:36.482507+00	2021-11-21 23:11:36.510748+00	\N	9e04a3c0-d98f-402f-ad12-ee18af8fb11d	1	1	waiting
+2021-11-21 23:11:37.660757+00	2021-11-21 23:11:37.675795+00	\N	ad3a5957-72d0-4596-837d-f24168aa06c7	1	1	waiting
+2021-11-21 23:11:39.283035+00	2021-11-21 23:11:39.30404+00	\N	aff03f85-3884-46d0-be25-8efe37f02c96	1	1	waiting
+2021-11-21 23:19:05.764796+00	2021-11-21 23:19:05.792424+00	\N	44cf917d-4e75-4c07-b74e-a6f125bdf264	1	1	waiting
+2021-11-21 23:30:13.383311+00	2021-11-21 23:30:13.38345+00	\N	2eaaf3cb-30fe-436e-aed6-efdaeaa94aa6	1	1	created
+2021-11-21 23:30:41.296436+00	2021-11-21 23:30:41.326138+00	\N	fcc531d3-495e-41e4-bd9d-c3f111294067	1	1	waiting
+2021-11-21 23:32:03.255545+00	2021-11-21 23:32:03.274197+00	\N	5ae92242-6e64-489f-b845-2566e8d5120e	1	1	waiting
+2021-11-21 23:32:55.549987+00	2021-11-21 23:32:55.581017+00	\N	7a5ec0ea-7f20-4110-bc11-bc1b42f02277	1	1	waiting
+2021-11-21 23:33:05.997222+00	2021-11-21 23:33:06.026862+00	\N	303175b9-a3c3-4d09-8075-25175c0a9de7	1	1	waiting
+2021-11-21 23:34:47.497122+00	2021-11-21 23:34:47.520979+00	\N	f686ea9f-52d3-44de-af70-5300a66fa43e	1	1	waiting
+2021-11-21 23:35:36.716371+00	2021-11-21 23:35:36.716455+00	\N	e263ab43-74b7-427c-bd9d-a77c21d4223d	1	1	created
+2021-11-21 23:36:16.276348+00	2021-11-21 23:36:16.276444+00	\N	64be5274-4b78-49aa-bd18-a41586af8c94	1	1	created
+2021-11-21 23:36:20.193087+00	2021-11-21 23:36:20.193277+00	\N	7e5c83b9-359f-4fba-a679-537249d83cf4	1	1	created
+2021-11-21 23:37:00.222846+00	2021-11-21 23:37:00.257338+00	\N	5d4db20f-5973-4164-a546-f24f380f47ac	1	1	waiting
+2021-11-21 23:37:03.815699+00	2021-11-21 23:37:03.84653+00	\N	21455ca5-331f-4576-9306-bb652e7af495	1	1	waiting
+2021-11-21 23:38:47.347736+00	2021-11-21 23:38:47.38728+00	\N	4e704ebe-43b4-43bd-94a2-7e1bfe34a180	1	1	waiting
+2021-11-21 23:39:18.257108+00	2021-11-21 23:39:18.307697+00	\N	90ab91d7-02e9-43b5-b2e0-1c44934b5f89	1	1	completed
+2021-11-21 23:39:41.587852+00	2021-11-21 23:39:41.658338+00	\N	294fb5cd-5e52-4d86-b175-427fbc7b480f	1	1	completed
+2021-11-21 23:39:48.204321+00	2021-11-21 23:39:48.222623+00	\N	2524acc0-8a0b-40ef-9102-dab622b3a2e2	1	1	waiting
+2021-11-21 23:39:49.413264+00	2021-11-21 23:39:49.428505+00	\N	03b97747-c4dd-4b9c-b258-de549f0a83c8	1	1	waiting
+2021-11-21 23:39:50.404972+00	2021-11-21 23:39:50.421415+00	\N	d96b8d7d-1d39-4798-81b1-1ec1a4a87b43	1	1	waiting
+2021-11-21 23:40:32.21286+00	2021-11-21 23:40:32.240266+00	\N	584d590e-5397-474e-a66e-4eccd04ff56a	1	1	completed
+2021-11-22 10:15:43.607217+00	2021-11-22 10:15:48.397763+00	\N	678fb99d-b63a-45c8-abf7-fa8b579a401d	1	1	completed
+2021-11-22 10:15:55.910983+00	2021-11-22 10:15:55.937278+00	\N	531e577c-f356-4374-a4aa-7b19d04ed0cf	1	1	waiting
+2021-11-22 10:16:11.796882+00	2021-11-22 10:16:11.883133+00	\N	ddf7defe-e679-461c-812d-6da7e6df3b08	1	1	completed
+2021-11-22 10:16:14.152299+00	2021-11-22 10:16:14.180488+00	\N	5d970903-3799-442e-8290-935d35f949b5	1	1	waiting
+2021-11-22 10:16:15.342209+00	2021-11-22 10:16:15.373642+00	\N	561e5351-fc8f-4b62-927e-17f342ff7991	1	1	waiting
+2021-11-22 10:16:16.435423+00	2021-11-22 10:16:16.455345+00	\N	6f539a9a-b0ec-48ff-987b-f87095e516b7	1	1	waiting
+2021-11-22 10:16:17.75174+00	2021-11-22 10:16:17.82374+00	\N	5071fc69-c249-4880-9b74-3995fa0b9636	1	1	waiting
+2021-11-22 10:16:35.035684+00	2021-11-22 10:16:35.119222+00	\N	a14fa521-3e8d-477e-b141-ce0517c371b5	1	1	completed
+2021-11-22 10:26:19.147001+00	2021-11-22 10:26:19.182689+00	\N	7564ebc1-f7be-4177-a97b-c68b45c69016	1	1	waiting
+2021-11-22 10:26:21.815211+00	2021-11-22 10:26:21.846556+00	\N	27f2d9ec-5e91-458a-9cc9-36157833d65c	1	1	waiting
+2021-11-22 10:26:38.466874+00	2021-11-22 10:26:38.525601+00	\N	5d936c31-9168-419d-a389-6ab7c7aa09c8	1	1	completed
+2021-11-22 10:29:38.702363+00	2021-11-22 10:29:38.775697+00	\N	0d1e885d-9eb0-453b-ad2f-e39fa27f732f	1	1	completed
+2021-11-22 10:29:42.733128+00	2021-11-22 10:29:42.754305+00	\N	f4703d46-d585-46e3-9689-9c711e085217	1	1	waiting
+2021-11-22 10:30:10.630009+00	2021-11-22 10:30:10.684236+00	\N	7eda49e7-6e6a-415e-a914-58c233d282b7	1	1	completed
+2021-11-22 11:45:33.983083+00	2021-11-22 11:45:33.983188+00	\N	afc3a883-4a1a-4b44-82d5-7be0b2b835b0	1	1	created
+2021-11-22 11:50:14.892065+00	2021-11-22 11:50:14.917978+00	\N	995db4a5-8993-4936-a58c-d6682463b168	1	1	waiting
+2021-11-22 12:24:57.67899+00	2021-11-22 12:24:57.721352+00	\N	5bf3a523-4468-4543-88e9-0807456c695a	1	1	waiting
+2021-11-22 12:25:28.933885+00	2021-11-22 12:25:29.004567+00	\N	82863a65-d83d-40f6-ad12-f3c619e3c11f	1	1	completed
+2021-11-22 12:32:05.726322+00	2021-11-22 12:32:05.807081+00	\N	7c9d0b53-728b-47cb-9b0f-b9ac9e546d73	1	1	waiting
+2021-11-22 12:40:26.676193+00	2021-11-22 12:40:26.724863+00	\N	d415d643-2cde-4318-b969-76af55c94cfc	1	1	completed
+2021-11-22 12:43:11.347245+00	2021-11-22 12:43:31.104117+00	\N	be32365c-f9a8-41f0-9fe7-999f3b499a6a	1	1	waiting
+2021-11-22 12:48:35.91265+00	2021-11-22 12:48:35.985033+00	\N	29f0f2a4-f500-485c-9030-81e44e995e3a	1	1	waiting
+2021-11-22 12:51:42.369555+00	2021-11-22 12:51:42.403848+00	\N	8e899d99-0002-447d-96f4-5ff1ddbac13d	1	1	waiting
+2021-11-22 13:28:03.613475+00	2021-11-22 13:28:03.949529+00	\N	77c453bf-8a63-4c98-9a46-a44d1f83ec96	1	1	waiting
+2021-11-22 13:28:10.086516+00	2021-11-22 13:28:10.122894+00	\N	e2d914c2-b44d-45b8-b293-35f07415dd4d	1	1	waiting
+2021-11-22 13:28:17.766009+00	2021-11-22 13:28:17.798504+00	\N	1757387d-5864-496b-a825-38f7ab4af1c4	1	1	waiting
+2021-11-22 13:33:53.139681+00	2021-11-22 13:33:53.229911+00	\N	d0829fe4-91ed-422e-a209-fa6526840b6b	1	1	waiting
+2021-11-22 13:33:58.780835+00	2021-11-22 13:33:58.81747+00	\N	9d941952-bff3-4a71-bcb4-7a0fc823d096	1	1	waiting
+2021-11-22 13:37:22.369562+00	2021-11-22 13:37:22.369602+00	\N	077694e9-2f89-4f41-97e9-3ab506f6f6c5	1	1	created
+2021-11-22 13:38:08.869668+00	2021-11-22 13:38:08.869721+00	\N	607bc7ec-fcf3-4b20-bef2-c7a39bd9dba9	1	1	created
+2021-11-22 13:39:37.797338+00	2021-11-22 13:39:37.797421+00	\N	574e2dcb-fc6e-40b5-9ab2-d9fd4e93dc0a	1	1	created
+2021-11-22 13:40:01.414383+00	2021-11-22 13:40:01.414437+00	\N	fae50673-49b1-449a-b66c-9a525747e342	1	1	created
+2021-11-22 13:47:58.470517+00	2021-11-22 13:47:58.470566+00	\N	a9427dee-8e35-448f-9554-c2d3adcd2b4c	1	1	created
+2021-11-22 13:54:36.455651+00	2021-11-22 13:54:36.455742+00	\N	05413b4d-cb3b-4004-954f-d46d8a94fe42	1	1	created
+2021-11-22 21:16:03.654907+00	2021-11-22 21:16:03.654966+00	\N	01549382-8284-41b1-9c8a-23514382fd17	1	1	created
+2021-11-22 21:18:17.339839+00	2021-11-22 21:18:17.487725+00	\N	ae2264f9-874f-4fe7-92de-8e89867b8bf8	1	1	waiting
+2021-11-22 21:31:15.538716+00	2021-11-22 21:31:15.679622+00	\N	2769a79a-c63d-4b16-af4d-4269d3237667	1	1	waiting
+2021-11-22 21:32:01.758942+00	2021-11-22 21:32:01.956841+00	\N	8526c200-c95b-4082-b0f7-040d65297042	1	1	completed
 \.
 
 
@@ -894,6 +984,10 @@ COPY public.order_order (created_at, modified_at, deleted_at, order_token, resta
 --
 
 COPY public.order_orderfood (id, created_at, modified_at, deleted_at, food_id, order_id, total, price) FROM stdin;
+1	2021-11-22 21:16:03.697248+00	2021-11-22 21:16:03.697305+00	\N	2	01549382-8284-41b1-9c8a-23514382fd17	5	22.50
+2	2021-11-22 21:18:17.424055+00	2021-11-22 21:18:17.42408+00	\N	2	ae2264f9-874f-4fe7-92de-8e89867b8bf8	5	22.50
+3	2021-11-22 21:31:15.622715+00	2021-11-22 21:31:15.622772+00	\N	2	2769a79a-c63d-4b16-af4d-4269d3237667	5	22.50
+4	2021-11-22 21:32:01.842237+00	2021-11-22 21:32:01.842269+00	\N	2	8526c200-c95b-4082-b0f7-040d65297042	5	22.50
 \.
 
 
@@ -901,7 +995,16 @@ COPY public.order_orderfood (id, created_at, modified_at, deleted_at, food_id, o
 -- Data for Name: restaurant_menu; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.restaurant_menu (id, created_at, modified_at, deleted_at, food_id, restaurant_id, "Amount") FROM stdin;
+COPY public.restaurant_menu (id, created_at, modified_at, deleted_at, food_id, restaurant_id, amount) FROM stdin;
+1	2021-11-20 21:27:27.879014+00	2021-11-20 21:27:27.879062+00	\N	9	3	5.00
+2	2021-11-20 21:27:27.879784+00	2021-11-20 21:27:27.879817+00	\N	7	3	7.00
+3	2021-11-20 21:27:27.880117+00	2021-11-20 21:27:27.880142+00	\N	8	3	4.00
+4	2021-11-20 21:27:40.935913+00	2021-11-20 21:27:40.93605+00	\N	4	2	4.00
+5	2021-11-20 21:27:40.937164+00	2021-11-20 21:27:40.937205+00	\N	6	2	3.00
+6	2021-11-20 21:27:40.937545+00	2021-11-20 21:27:40.937571+00	\N	5	2	2.00
+7	2021-11-20 21:27:53.22503+00	2021-11-20 21:27:53.225166+00	\N	1	1	4.00
+8	2021-11-20 21:27:53.22625+00	2021-11-20 21:27:53.226295+00	\N	3	1	4.00
+9	2021-11-20 21:27:53.226708+00	2021-11-21 21:25:53.742185+00	\N	2	1	4.50
 \.
 
 
@@ -910,6 +1013,9 @@ COPY public.restaurant_menu (id, created_at, modified_at, deleted_at, food_id, r
 --
 
 COPY public.restaurant_restaurant (id, created_at, modified_at, deleted_at, name, category_id) FROM stdin;
+1	2021-11-20 21:19:03.641479+00	2021-11-20 21:27:53.223257+00	\N	Süper Dönerci	1
+2	2021-11-20 21:19:39.329511+00	2021-11-20 21:27:40.933467+00	\N	Harika Ev Yemekleri	2
+3	2021-11-20 21:19:59.526283+00	2021-11-20 21:27:27.877237+00	\N	Bizim Büfe	3
 \.
 
 
@@ -956,7 +1062,7 @@ SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 1, false);
 -- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.auth_user_id_seq', 1, false);
+SELECT pg_catalog.setval('public.auth_user_id_seq', 4, true);
 
 
 --
@@ -970,7 +1076,7 @@ SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 1, false);
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 1, false);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 10, true);
 
 
 --
@@ -984,42 +1090,42 @@ SELECT pg_catalog.setval('public.django_content_type_id_seq', 12, true);
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 36, true);
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 38, true);
 
 
 --
 -- Name: food_food_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.food_food_id_seq', 1, false);
+SELECT pg_catalog.setval('public.food_food_id_seq', 9, true);
 
 
 --
 -- Name: order_orderfood_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.order_orderfood_id_seq', 1, false);
+SELECT pg_catalog.setval('public.order_orderfood_id_seq', 4, true);
 
 
 --
 -- Name: restaurant_menu_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.restaurant_menu_id_seq', 1, false);
+SELECT pg_catalog.setval('public.restaurant_menu_id_seq', 9, true);
 
 
 --
 -- Name: restaurant_restaurant_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.restaurant_restaurant_id_seq', 1, false);
+SELECT pg_catalog.setval('public.restaurant_restaurant_id_seq', 5, true);
 
 
 --
 -- Name: restaurant_restaurantcategory_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.restaurant_restaurantcategory_id_seq', 1, false);
+SELECT pg_catalog.setval('public.restaurant_restaurantcategory_id_seq', 3, true);
 
 
 --
