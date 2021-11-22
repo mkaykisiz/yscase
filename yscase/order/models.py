@@ -1,3 +1,4 @@
+import logging
 import uuid
 from decimal import Decimal
 
@@ -9,6 +10,8 @@ from yscase.libs.models import TimestampedModelWithIndex
 from yscase.food.models import Food
 from yscase.restaurant.models import Restaurant
 from yscase.user.models import User
+
+logger = logging.getLogger(__name__)
 
 CREATED = 'created'
 WAITING = 'waiting'
@@ -87,6 +90,7 @@ class OrderFood(TimestampedModelWithIndex):
         menu_food = self.order.restaurant.menu_set.filter(
             food=self.food).first()
         if not menu_food:
+            logger.info("[OrderFood] Restaurant hasn't this food!")
             raise ValueError(
                 "Restaurant hasn't this food!"
             )

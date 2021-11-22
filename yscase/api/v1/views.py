@@ -1,9 +1,15 @@
+import logging
+
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import mixins, status
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
 from yscase.api.v1.serializers import OrderSerializer, OrderProcessSerializer
+from yscase.libs.redis_conn import RedisConn
 from yscase.order.models import Order
+
+logger = logging.getLogger(__name__)
 
 
 class OrderViewSet(mixins.CreateModelMixin,
@@ -12,13 +18,15 @@ class OrderViewSet(mixins.CreateModelMixin,
                    GenericViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['status']
     lookup_field = 'order_token'
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
-        self.set_order_to_publish(serializer.instance.order_token)
+        self.set_order_to_publish(str(serializer.instance.order_token))
         serializer.instance.update_status_waiting()
         serializer.instance.save()
         headers = self.get_success_headers(serializer.data)
@@ -27,7 +35,7 @@ class OrderViewSet(mixins.CreateModelMixin,
                         headers=headers)
 
     def set_order_to_publish(self, order_token):
-        print(order_token)
+        RedisConn().pub(order_token)
 
 
 class OrderProcessViewSet(mixins.ListModelMixin,
@@ -44,7 +52,12 @@ class OrderProcessViewSet(mixins.ListModelMixin,
                 order.save()
                 serializer = self.get_serializer(instance=order)
                 return Response(serializer.data)
-        return Response(status=400, data={'error': 'Order Token is Wrong!'})
+            logger.info(f"[OrderProcessViewSet]"
+                        f" Wrong order_token: {order_token}")
+            return Response(status=400, data={'error': 'Order Token is Wrong!'})
+
+        logger.info("[OrderProcessViewSet] Subscription not found order_token")
+        return Response(status=400, data={'error': 'Order Token Not Found!'})
 
     def get_order_from_subscription(self):
-        return "4e37d95a-e090-405a-86c7-514a22173c90"
+        return RedisConn().sub()

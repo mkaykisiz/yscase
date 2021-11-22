@@ -17,6 +17,11 @@ from django.utils.translation import ugettext_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SOURCE_ROOT = os.path.join(os.path.dirname(__file__))
+
+PROJECT_ROOT = os.path.realpath(
+    os.path.join(SOURCE_ROOT, os.path.pardir))
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -24,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-oe--#iefbukdp7yiy@a@+164$s+utx1-c%y8r_s*&u@bg89y0)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -134,12 +139,24 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'user.User'
 
+PUB_SUB_CHANNEL = 'ys'
+
+# REDIS INFO
+REDIS_CONN_TIMEOUT = 10
+REDIS_HOST = 'localhost'
+REDIS_PORT = '6379'
+REDIS_PASS = None
+
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
     ]
+
 }
 
 JAZZMIN_SETTINGS = {
@@ -308,4 +325,45 @@ JAZZMIN_UI_TWEAKS = {
         "success": "btn-outline-success"
     },
     "actions_sticky_top": False
+}
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(name)-25s %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+        'logfile': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename':  PROJECT_ROOT + '/log/local.log',
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'yscase': {
+            'handlers': ['logfile', 'console'],
+            'level': 'DEBUG',
+        },
+        'django.db.backends': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+        'requests': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    }
 }
