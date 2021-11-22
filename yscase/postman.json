@@ -1,0 +1,99 @@
+{
+  "info": {
+    "_postman_id": "6c9f0fa7-fada-4d9c-8fba-895ac84d0bf1",
+    "name": "Yemeksepeti",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Orders",
+      "id": "6fc01ebd-4757-4a42-9e14-b74589889e2e",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": {
+            "username": "m.kaykisiz@gmail.com",
+            "password": "yemeksepeti",
+            "saveHelperData": true,
+            "showPassword": false
+          }
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"order_items\": [\n        {\n            \"food\": 2,\n            \"total\": 5\n        }\n    ],\n    \"user\": 1,\n    \"restaurant\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://127.0.0.1:8000/api/v1/orders/"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Orders",
+      "id": "a436cac7-3981-409d-bd72-f987b6582da7",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": {
+            "username": "m.kaykisiz@gmail.com",
+            "password": "yemeksepeti",
+            "saveHelperData": true,
+            "showPassword": false
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"order_items\": [\n        {\n            \"food\": 2,\n            \"total\": 3\n        }\n    ],\n    \"user\": 1,\n    \"restaurant\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://127.0.0.1:8000/api/v1/orders/"
+      },
+      "response": []
+    },
+    {
+      "name": "Process Orders",
+      "id": "f99c386d-7950-4562-b70d-545a8069a2c9",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": {
+            "username": "m.kaykisiz@gmail.com",
+            "password": "yemeksepeti",
+            "saveHelperData": true,
+            "showPassword": false
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://127.0.0.1:8000/api/v1/order/process/"
+      },
+      "response": []
+    }
+  ]
+}
