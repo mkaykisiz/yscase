@@ -16,4 +16,5 @@ EXPOSE 8000
 RUN flake8 .
 
 CMD /wait && ./manage.py migrate
+CMD /wait && ./manage.py collectstatic
 CMD /wait && python manage.py runserver 0.0.0.0:8000
