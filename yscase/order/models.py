@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 CREATED = 'created'
 WAITING = 'waiting'
 COMPLETED = 'completed'
+FOOD_NOT_IN_MENU_ERROR = "Restaurant hasn't this food!"
 
 
 class Order(TimestampedModelWithIndex):
@@ -92,7 +93,7 @@ class OrderFood(TimestampedModelWithIndex):
         if not menu_food:
             logger.info("[OrderFood] Restaurant hasn't this food!")
             raise ValueError(
-                "Restaurant hasn't this food!"
+                FOOD_NOT_IN_MENU_ERROR
             )
         self.price = self.total * menu_food.amount
         return super(OrderFood, self).save(*args, **kwargs)

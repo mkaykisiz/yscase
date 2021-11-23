@@ -11,10 +11,14 @@ COPY . .
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.5.1/wait /wait
 RUN chmod +x /wait
 
-EXPOSE 8000
+
 
 RUN flake8 .
 
-CMD /wait && ./manage.py migrate
-CMD /wait && ./manage.py collectstatic
+EXPOSE 8000
+
+
+CMD /wait && python manage.py migrate
+CMD /wait && python manage.py collectstatic
+CMD /wait && python manage.py test
 CMD /wait && python manage.py runserver 0.0.0.0:8000

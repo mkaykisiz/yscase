@@ -19,8 +19,8 @@ from rest_framework import routers
 from yscase.api.v1.views import OrderViewSet, OrderProcessViewSet
 
 router = routers.DefaultRouter()
-router.register(r'orders', OrderViewSet)
-router.register(r'order/process', OrderProcessViewSet)
+router.register(r'orders', OrderViewSet, basename='orders')
+router.register(r'order/process', OrderProcessViewSet, basename='order-process')
 
 urlpatterns = [
     path('v1/', include(router.urls)),

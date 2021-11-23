@@ -860,7 +860,6 @@
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Default-createOrder-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X POST\
- -H "Authorization: Basic [[basicHash]]"\
 -H "Accept: application/json"\
 -H "Content-Type: application/json"\
 "https://virtserver.swaggerhub.com/mkaykisiz/yemeksepeti/1.0.0/api/v1/orders/"</code></pre>
@@ -877,11 +876,6 @@ import java.util.*;
 public class DefaultApiExample {
 
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // Configure HTTP basic authorization: basicAuth
-        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
 
         DefaultApi apiInstance = new DefaultApi();
         OrderRequest body = ; // OrderRequest | Create Order Request
@@ -919,11 +913,7 @@ public class DefaultApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Default-createOrder-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-// Configure HTTP basic authorization (authentication scheme: basicAuth)
-[apiConfig setUsername:@"YOUR_USERNAME"];
-[apiConfig setPassword:@"YOUR_PASSWORD"];
-OrderRequest *body = ; // Create Order Request (optional)
+                              <pre class="prettyprint"><code class="language-cpp">OrderRequest *body = ; // Create Order Request (optional)
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
@@ -942,14 +932,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
                             <div class="tab-pane" id="examples-Default-createOrder-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var YemeksepetiCase = require('yemeksepeti_case');
-var defaultClient = YemeksepetiCase.ApiClient.instance;
-// Configure HTTP basic authorization: basicAuth
-var basicAuth = defaultClient.authentications['basicAuth'];
-basicAuth.username = 'YOUR USERNAME'
-basicAuth.password = 'YOUR PASSWORD'
 
 var api = new YemeksepetiCase.DefaultApi()
-var opts = { 
+var opts = {
   'body':  // {{OrderRequest}} Create Order Request
 };
 var callback = function(error, data, response) {
@@ -979,12 +964,9 @@ namespace Example
     {
         public void main()
         {
-            // Configure HTTP basic authorization: basicAuth
-            Configuration.Default.Username = "YOUR_USERNAME";
-            Configuration.Default.Password = "YOUR_PASSWORD";
 
             var apiInstance = new DefaultApi();
-            var body = new OrderRequest(); // OrderRequest | Create Order Request (optional) 
+            var body = new OrderRequest(); // OrderRequest | Create Order Request (optional)
 
             try
             {
@@ -1005,9 +987,6 @@ namespace Example
                             <div class="tab-pane" id="examples-Default-createOrder-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure HTTP basic authorization: basicAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
-Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
 
 $api_instance = new Swagger\Client\ApiDefaultApi();
 $body = ; // OrderRequest | Create Order Request
@@ -1025,14 +1004,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DefaultApi;
-# Configure HTTP basic authorization: basicAuth
-$WWW::SwaggerClient::Configuration::username = 'YOUR_USERNAME';
-$WWW::SwaggerClient::Configuration::password = 'YOUR_PASSWORD';
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 my $body = WWW::SwaggerClient::Object::OrderRequest->new(); # OrderRequest | Create Order Request
 
-eval { 
+eval {
     my $result = $api_instance->createOrder(body => $body);
     print Dumper($result);
 };
@@ -1047,15 +1023,12 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
-# Configure HTTP basic authorization: basicAuth
-swagger_client.configuration.username = 'YOUR_USERNAME'
-swagger_client.configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
 body =  # OrderRequest | Create Order Request (optional)
 
-try: 
+try:
     # Create new order
     api_response = api_instance.create_order(body=body)
     pprint(api_response)
@@ -1076,8 +1049,8 @@ except ApiException as e:
                               </tr>
                                 <tr><td style="width:150px;">body </td>
                                 <td>
-                                
-                                
+
+
                                 <script>
                                 $(document).ready(function() {
                                   var schemaWrapper = {
@@ -1100,7 +1073,7 @@ except ApiException as e:
                                       console.log(err);
                                     });
                                   }
-                                
+
                                   var view = new JSONSchemaView(schema,2,{isBodyParam: true});
                                   var result = $('#d2e199_createOrder_body');
                                   result.empty();
@@ -1207,7 +1180,6 @@ except ApiException as e:
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Default-filter_Orders-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
- -H "Authorization: Basic [[basicHash]]"\
 -H "Accept: application/json"\
 "https://virtserver.swaggerhub.com/mkaykisiz/yemeksepeti/1.0.0/api/v1/orders/?status="</code></pre>
                           </div>
@@ -1223,11 +1195,6 @@ import java.util.*;
 public class DefaultApiExample {
 
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // Configure HTTP basic authorization: basicAuth
-        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
 
         DefaultApi apiInstance = new DefaultApi();
         String status = status_example; // String | filter status
@@ -1265,11 +1232,7 @@ public class DefaultApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Default-filter_Orders-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-// Configure HTTP basic authorization (authentication scheme: basicAuth)
-[apiConfig setUsername:@"YOUR_USERNAME"];
-[apiConfig setPassword:@"YOUR_PASSWORD"];
-String *status = status_example; // filter status (optional)
+                              <pre class="prettyprint"><code class="language-cpp">String *status = status_example; // filter status (optional)
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
@@ -1288,14 +1251,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
                             <div class="tab-pane" id="examples-Default-filter_Orders-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var YemeksepetiCase = require('yemeksepeti_case');
-var defaultClient = YemeksepetiCase.ApiClient.instance;
-// Configure HTTP basic authorization: basicAuth
-var basicAuth = defaultClient.authentications['basicAuth'];
-basicAuth.username = 'YOUR USERNAME'
-basicAuth.password = 'YOUR PASSWORD'
 
 var api = new YemeksepetiCase.DefaultApi()
-var opts = { 
+var opts = {
   'status': status_example // {{String}} filter status
 };
 var callback = function(error, data, response) {
@@ -1325,12 +1283,9 @@ namespace Example
     {
         public void main()
         {
-            // Configure HTTP basic authorization: basicAuth
-            Configuration.Default.Username = "YOUR_USERNAME";
-            Configuration.Default.Password = "YOUR_PASSWORD";
 
             var apiInstance = new DefaultApi();
-            var status = status_example;  // String | filter status (optional) 
+            var status = status_example;  // String | filter status (optional)
 
             try
             {
@@ -1351,9 +1306,6 @@ namespace Example
                             <div class="tab-pane" id="examples-Default-filter_Orders-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure HTTP basic authorization: basicAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
-Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
 
 $api_instance = new Swagger\Client\ApiDefaultApi();
 $status = status_example; // String | filter status
@@ -1371,14 +1323,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DefaultApi;
-# Configure HTTP basic authorization: basicAuth
-$WWW::SwaggerClient::Configuration::username = 'YOUR_USERNAME';
-$WWW::SwaggerClient::Configuration::password = 'YOUR_PASSWORD';
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 my $status = status_example; # String | filter status
 
-eval { 
+eval {
     my $result = $api_instance->filter_Orders(status => $status);
     print Dumper($result);
 };
@@ -1393,15 +1342,12 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
-# Configure HTTP basic authorization: basicAuth
-swagger_client.configuration.username = 'YOUR_USERNAME'
-swagger_client.configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
 status = status_example # String | filter status (optional)
 
-try: 
+try:
     # Get Orders
     api_response = api_instance.filter_orders(status=status)
     pprint(api_response)
@@ -1424,15 +1370,15 @@ except ApiException as e:
                               </tr>
                                 <tr><td style="width:150px;">status</td>
                                 <td>
-                                
-                                
+
+
                                     <div id="d2e199_filter_Orders_status">
                                         <div class="json-schema-view">
                                             <div class="primitive">
                                                 <span class="type">
                                                     String
                                                 </span>
-                                
+
                                                     <div class="inner description">
                                                         filter status
                                                     </div>
@@ -1540,7 +1486,6 @@ except ApiException as e:
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Default-proccesOrder-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
- -H "Authorization: Basic [[basicHash]]"\
 -H "Accept: application/json"\
 "https://virtserver.swaggerhub.com/mkaykisiz/yemeksepeti/1.0.0/api/v1/order/process/"</code></pre>
                           </div>
@@ -1556,11 +1501,6 @@ import java.util.*;
 public class DefaultApiExample {
 
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // Configure HTTP basic authorization: basicAuth
-        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
 
         DefaultApi apiInstance = new DefaultApi();
         try {
@@ -1596,15 +1536,11 @@ public class DefaultApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Default-proccesOrder-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-// Configure HTTP basic authorization (authentication scheme: basicAuth)
-[apiConfig setUsername:@"YOUR_USERNAME"];
-[apiConfig setPassword:@"YOUR_PASSWORD"];
-
+                              <pre class="prettyprint"><code class="language-cpp">
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // Process Order
-[apiInstance proccesOrderWithCompletionHandler: 
+[apiInstance proccesOrderWithCompletionHandler:
               ^(OrderResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -1618,11 +1554,6 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
                             <div class="tab-pane" id="examples-Default-proccesOrder-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var YemeksepetiCase = require('yemeksepeti_case');
-var defaultClient = YemeksepetiCase.ApiClient.instance;
-// Configure HTTP basic authorization: basicAuth
-var basicAuth = defaultClient.authentications['basicAuth'];
-basicAuth.username = 'YOUR USERNAME'
-basicAuth.password = 'YOUR PASSWORD'
 
 var api = new YemeksepetiCase.DefaultApi()
 var callback = function(error, data, response) {
@@ -1652,9 +1583,6 @@ namespace Example
     {
         public void main()
         {
-            // Configure HTTP basic authorization: basicAuth
-            Configuration.Default.Username = "YOUR_USERNAME";
-            Configuration.Default.Password = "YOUR_PASSWORD";
 
             var apiInstance = new DefaultApi();
 
@@ -1677,9 +1605,6 @@ namespace Example
                             <div class="tab-pane" id="examples-Default-proccesOrder-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure HTTP basic authorization: basicAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
-Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
 
 $api_instance = new Swagger\Client\ApiDefaultApi();
 
@@ -1696,13 +1621,10 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DefaultApi;
-# Configure HTTP basic authorization: basicAuth
-$WWW::SwaggerClient::Configuration::username = 'YOUR_USERNAME';
-$WWW::SwaggerClient::Configuration::password = 'YOUR_PASSWORD';
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 
-eval { 
+eval {
     my $result = $api_instance->proccesOrder();
     print Dumper($result);
 };
@@ -1717,9 +1639,6 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
-# Configure HTTP basic authorization: basicAuth
-swagger_client.configuration.username = 'YOUR_USERNAME'
-swagger_client.configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
