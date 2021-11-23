@@ -1,0 +1,165 @@
+[
+  {
+    "pk": 1,
+    "model": "auth.group",
+    "fields": {
+      "name": "Account Manager",
+      "permissions": []
+    }
+  },
+  {
+    "pk": 2,
+    "model": "auth.group",
+    "fields": {
+      "name": "Customer Manager",
+      "permissions": []
+    }
+  },
+  {
+    "pk": 1,
+    "model": "user.user",
+    "fields": {
+      "is_active": true,
+      "is_superuser": true,
+      "date_joined": "2013-07-19T06:05:47.377Z",
+      "last_login": "2013-07-19T06:05:47.377Z",
+      "first_name": "Uğur",
+      "last_name": "Özi",
+      "is_staff": true,
+      "groups": [],
+      "user_permissions": [],
+      "password": "pbkdf2_sha256$260000$g1fyosRdL4OcD0E891gYnr$/bmF09dXLURwpcxJ0ejbYPG9NtfPW79JAPtF8WGSvn4=",
+      "email": "uozy@yspt.com"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "user.user",
+    "fields": {
+      "is_active": true,
+      "is_superuser": false,
+      "date_joined": "2013-07-19T06:05:47.377Z",
+      "last_login": "2013-07-19T06:05:47.377Z",
+      "first_name": "cenk",
+      "last_name": "Yaldız",
+      "is_staff": false,
+      "groups": [
+        2
+      ],
+      "user_permissions": [],
+      "password": "pbkdf2_sha256$260000$RCfPcIgQv0edbtEEzf3K1F$LDvNxWhCI+RE4GrIQNhETUhF8Ytt2dChME7vyJYQvP8=",
+      "email": "cyaldiz@yspt.com"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "food.food",
+    "fields": {
+      "name": "food 1",
+      "cover_image": "",
+      "created_at": "2013-07-19T06:05:47.377Z",
+      "modified_at": "2013-07-19T06:05:47.377Z"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "food.food",
+    "fields": {
+      "name": "food 2",
+      "cover_image": "",
+      "created_at": "2013-07-19T06:05:47.377Z",
+      "modified_at": "2013-07-19T06:05:47.377Z"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "restaurant.restaurantcategory",
+    "fields": {
+      "title": "category",
+      "slug": "category",
+      "created_at": "2013-07-19T06:05:47.377Z",
+      "modified_at": "2013-07-19T06:05:47.377Z"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "restaurant.restaurant",
+    "fields": {
+      "name": "restaurant",
+      "category_id": 1,
+      "created_at": "2013-07-19T06:05:47.377Z",
+      "modified_at": "2013-07-19T06:05:47.377Z"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "restaurant.menu",
+    "fields": {
+      "food_id": 1,
+      "restaurant_id": 1,
+      "amount": 5,
+      "created_at": "2013-07-19T06:05:47.377Z",
+      "modified_at": "2013-07-19T06:05:47.377Z"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "order.order",
+    "fields": {
+      "order_token": "167df4ee-9a2c-4cf9-bfff-924c0ccc3050",
+      "restaurant_id": 1,
+      "user_id": 1,
+      "status": "created",
+      "created_at": "2013-07-19T06:05:47.377Z",
+      "modified_at": "2013-07-19T06:05:47.377Z"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "order.order",
+    "fields": {
+      "order_token": "8526c200-c95b-4082-b0f7-040d65297042",
+      "restaurant_id": 1,
+      "user_id": 2,
+      "status": "created",
+      "created_at": "2013-07-19T06:05:47.377Z",
+      "modified_at": "2013-07-19T06:05:47.377Z"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "order.orderfood",
+    "fields": {
+      "food_id": 1,
+      "order_id": "167df4ee-9a2c-4cf9-bfff-924c0ccc3050",
+      "total": 3,
+      "price": 5.5,
+      "created_at": "2013-07-19T06:05:47.377Z",
+      "modified_at": "2013-07-19T06:05:47.377Z"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "order.orderfood",
+    "fields": {
+      "food_id": 2,
+      "order_id": "167df4ee-9a2c-4cf9-bfff-924c0ccc3050",
+      "total": 4,
+      "price": 25.5,
+      "created_at": "2013-07-19T06:05:47.377Z",
+      "modified_at": "2013-07-19T06:05:47.377Z"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "order.orderfood",
+    "fields": {
+      "food_id": 2,
+      "order_id": "8526c200-c95b-4082-b0f7-040d65297042",
+      "total": 2,
+      "price": 15.5,
+      "created_at": "2013-07-19T06:05:47.377Z",
+      "modified_at": "2013-07-19T06:05:47.377Z"
+    }
+  }
+]

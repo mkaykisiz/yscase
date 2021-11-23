@@ -158,9 +158,8 @@ REDIS_PASS = None
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': [],
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend'
     ]
@@ -335,7 +334,6 @@ JAZZMIN_UI_TWEAKS = {
     "actions_sticky_top": False
 }
 
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -356,7 +354,7 @@ LOGGING = {
         'logfile': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename':  PROJECT_ROOT + '/log/local.log',
+            'filename': PROJECT_ROOT + '/log/local.log',
             'formatter': 'verbose',
         },
     },
