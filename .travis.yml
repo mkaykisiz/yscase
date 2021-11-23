@@ -5,12 +5,13 @@ python:
 
 services:
   - docker
+  - postgresql
 
 before_script:
   - pip install docker-compose
-  - psql -c 'create database test;' -U postgres -p 5434
+  - psql -c 'create database test;' -U postgres -p 5434:5432
 
 
 script:
-  - python manage.py migrate
   - docker-compose run app sh -c "python manage.py test && flake8"
+  - python manage.py migrate
