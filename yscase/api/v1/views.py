@@ -26,7 +26,9 @@ class OrderViewSet(mixins.CreateModelMixin,
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
+        # publish order token
         self.set_order_to_publish(str(serializer.instance.order_token))
+
         serializer.instance.update_status_waiting()
         serializer.instance.save()
         headers = self.get_success_headers(serializer.data)
@@ -35,6 +37,10 @@ class OrderViewSet(mixins.CreateModelMixin,
                         headers=headers)
 
     def set_order_to_publish(self, order_token):
+        """
+        Publish order to channel
+        :order_token: Order pk id
+        """
         RedisConn().pub(order_token)
 
 
@@ -44,10 +50,12 @@ class OrderProcessViewSet(mixins.ListModelMixin,
     serializer_class = OrderProcessSerializer
 
     def list(self, request, *args, **kwargs):
+        # Catch order token
         order_token = self.get_order_from_subscription()
         if order_token:
             order = self.queryset.filter(order_token=order_token).first()
             if order:
+                # update status
                 order.update_status_completed()
                 order.save()
                 serializer = self.get_serializer(instance=order)
@@ -60,4 +68,8 @@ class OrderProcessViewSet(mixins.ListModelMixin,
         return Response(status=400, data={'error': 'Order Token Not Found!'})
 
     def get_order_from_subscription(self):
+        """
+        Subscribe order channel and get token
+        :return: order_token str
+        """
         return RedisConn().sub()

@@ -39,9 +39,30 @@ If you want make test endpoints, import postman.json to postman.
 <http://localhost:8000/static/doc/index.html>
 
 ### Run Tests 
+Run tests
+```bash
+./manage.py test
+```
 
 ### Run Flake8 
 Run lint controls
 ```bash
 flake8
 ```
+
+### App Info
+#### Food
+##### - Food
+    Food detail
+#### Restaurant
+##### - RestaurantCategory
+    Category for restaurant
+##### - Restaurant
+    Restaurant info
+##### - Menu
+    Restaurant and food match for menu
+#### Order
+##### - Order
+    restaurant, user info for order 
+##### - OrderFood
+    food and total info for order
