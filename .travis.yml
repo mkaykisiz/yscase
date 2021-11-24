@@ -9,7 +9,7 @@ services:
 
 before_script:
   - pip install docker-compose
-  - psql -c 'create database ysdb;' -U postgres -p 5432:5432
+  - psql -c 'create database ysdb;'
 
 
 script:
