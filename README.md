@@ -1,4 +1,4 @@
-# Yemeksepeti
+# Yemeksepeti [![Build Status](https://app.travis-ci.com/mkaykisiz/yscase.svg?token=AxZxQfARJUyhfvh44dda&branch=master)](https://app.travis-ci.com/mkaykisiz/yscase)
 How to install app
 
 ---
