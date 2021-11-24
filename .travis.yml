@@ -9,9 +9,8 @@ services:
 
 before_script:
   - pip install docker-compose
-  - psql -c 'create database test;' -U postgres -p 5434
+  - psql -c 'create database ysdb;' -U postgres -p 5434
 
 
 script:
-  - docker-compose run app sh -c "python manage.py test && flake8"
-  - python manage.py migrate
+  - docker-compose up app sh -c "python manage.py migrate && python manage.py test && flake8"
