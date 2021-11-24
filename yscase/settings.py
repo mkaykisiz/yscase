@@ -13,8 +13,6 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-from django.utils.translation import ugettext_lazy
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SOURCE_ROOT = os.path.join(os.path.dirname(__file__))
@@ -88,9 +86,9 @@ WSGI_APPLICATION = 'yscase.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'test',
+        'NAME': 'ysdb',
         'USER': 'postgres',
-        'PASSWORD': 'luna',
+        'PASSWORD': 'ysdb_pss',
         'HOST': 'postgres',
         'PORT': '5432',
     }

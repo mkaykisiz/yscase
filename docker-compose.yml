@@ -26,29 +26,24 @@ services:
 
   # Postgres
   postgres:
-    image: "postgres"
+    image: "postgres:latest"
     volumes:
       - "./data/postgres-data:/var/lib/postgresql/data"
       - "./init.sql:/docker-entrypoint-initdb.d/init.sql"
     networks:
       - "main"
     ports:
-      - "5434:5432"
-    expose:
-      - "5434"
+      - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: "luna"
-      POSTGRES_DB: "test"
-
+      POSTGRES_PASSWORD: "ysdb_pss"
+      POSTGRES_DB: "ysdb"
 
   # Redis
   redis:
-    image: "redis"
+    image: "redis:latest"
     volumes:
       - "./data/redis-data:/data"
     networks:
       - "main"
     ports:
-      - "6380:6379"
-    expose:
-      - "6380"
+      - "6379:6379"
